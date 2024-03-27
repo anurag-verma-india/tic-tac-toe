@@ -10,7 +10,6 @@ const App = {
     },
 
     state: {
-        currentPlayer: 1,
         moves: []
     },
 
@@ -36,19 +35,25 @@ const App = {
         // TODO
         App.$.squares.forEach(square => {
             square.addEventListener('click', (event) => {
-                console.log(`Square with id ${square.id} was clicked`)
-                console.log(`Current player is ${App.state.currentPlayer}`)
-
-
-                // Return early if the clicked square is not empty
-                if (square.hasChildNodes()) {
-                    console.log("Square is not empty");
+                // Return early if the clicked square hasMove in it
+                const hasMove = (squareId) => {
+                    const existingMove = App.state.moves.find(
+                        (move) => move.squareId === squareId
+                    );
+                    return existingMove !== undefined;
+                }
+                if (hasMove(+square.id)) {
                     return;
                 }
 
-                // Determine which icon to add to the square
-                const currentPlayer = App.state.currentPlayer;
+                // Finding the current player
+                const lastMove = App.state.moves[App.state.moves.length - 1];
+                // const lastMove = App.state.moves.at(-1);
+                const getOppositePlayer = (playerId) => playerId === 1 ? 2 : 1
+                const currentPlayer = App.state.moves.length === 0 ? 1 : getOppositePlayer(lastMove.playerId);
 
+
+                // Determine which icon to add to the square
                 const icon = document.createElement('i');
                 if (currentPlayer === 1) {
                     icon.classList.add("fa-solid", "fa-x", "yellow");
@@ -56,11 +61,12 @@ const App = {
                     icon.classList.add("fa-solid", "fa-o", "turquoise");
                 }
 
-                App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1;
                 App.state.moves.push({
-                    squareId: square.push
+                    squareId: +square.id,
+                    playerId: currentPlayer
                 })
 
+                // App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
 
                 square.replaceChildren(icon);
                 // <i class="fa-solid fa-x yellow"></i>
@@ -78,6 +84,7 @@ const App = {
                     [1, 5, 9],
                     [3, 5, 7]
                 ];
+                console.log("\n\n");
             })
         })
     }
