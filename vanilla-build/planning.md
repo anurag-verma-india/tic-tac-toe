@@ -30,6 +30,7 @@
 
 1. Global Scope and namespaces
 2. Stable selectors (data-\* attributes)
+3. Separate logic by responsibility ("separation of concerns")
 
 ## What is a state?
 

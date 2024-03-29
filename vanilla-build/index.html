@@ -17,8 +17,8 @@
         <div class="grid">
 
             <!-- Turn indicator -->
-            <div class="turn">
-                <i class="fa-solid fa-x turquoise"></i>
+            <div data-id="turn" class="turn">
+                <i class="fa-solid fa-x yellow"></i>
                 <p>Player 1, you're up!</p>
             </div>
 
@@ -77,16 +77,16 @@
     </footer>
 
     <!-- Modal that opens when the game ends -->
-    <div class="modal hidden">
-        <div class=" model-contents">
-            <p>Player 1 wins!</p>
-            <button>Play again</button>
+    <div data-id="modal" class="modal hidden">
+        <div data-id="modal-contents" class=" model-contents">
+            <p data-id="modal-text"></p>
+            <button data-id="modal-btn" >Play again</button>
         </div>
     </div>
 
     <script src="js/app.js"></script>
-
 </body>
+
 
 
 
