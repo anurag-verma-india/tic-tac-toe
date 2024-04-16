@@ -173,7 +173,6 @@ function init() {
     })
 
 
-    console.log(view.$.turn);
 
 }
 
