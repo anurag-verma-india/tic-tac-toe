@@ -86,7 +86,6 @@ button:hover {
 /* Game controls */
 
 .turn {
-    color: var(--yellow);
 
     grid-column: 1/3;
     align-self: center;

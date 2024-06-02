@@ -168,10 +168,8 @@ function init() {
 
 
     view.bindPlayerMoveEvent(event => {
-        console.log("Move event")
-        console.log(event)
+        view.setTurnIndicator(1)
     })
-
 
 
 }
